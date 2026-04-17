@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZayFBS - Navbar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <span class="zay">Zay</span><span class="fbs">FBS</span>
+        </a>
+        
+        <ul class="nav-links">
+            <li><a href="#" class="active">ACCUEIL</a></li>
+            <li><a href="#">NOS PRODUITS</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+        
+        <a href="#" class="cart-btn">PANIER</a>
+    </nav>
+    <section id="hero">
+    <div class="hero-inner">
+      <p class="hero-tag">Fquih Ben Saleh · Béni Mellal-Khénifra</p>
+      <h1 class="hero-titre">L'or vert<br>de nos <em>fermes</em></h1>
+      <p class="hero-sous">Huile d'olive extra vierge pressée à froid, issue des terres fertiles de la région de Fquih Ben Saleh.</p>
+      <button class="btn-primary" onclick="naviguer('produits', document.querySelector('.nav-links a:nth-child(2)'))">Découvrir nos produits</button>
+    </div>
+    </section>
+    <section id="sectin-fermes" class="section">
+        <p class="section-tag">Nos fermes</p>
+        <h2 class="section-titre">Un terroir d'exception,<br><em>trois familles</em></h2>
+        <p class="section-desc">Nos oliviers centenaires poussent sur des terres gènèreuses,cultivèes avec passion et respect des traditions</p>
+    </section>
+</body>
+</html>

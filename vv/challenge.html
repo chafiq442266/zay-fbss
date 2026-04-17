@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>DOM Exercises</title>
+
+<style>
+/* غير شوية ديال ستايل باش يبان مزيان */
+.active {
+  background-color: green;
+  color: white;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 5px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>DOM Exercises</h1>
+
+<script>
+
+/* =========================
+   ✅ Exercice 1
+========================= */
+
+// كنصايبو container div
+let container = document.createElement("div");
+
+// كنصايبو 3 paragraph
+let p1 = document.createElement("p");
+p1.textContent = "Paragraphe 1";
+
+let p2 = document.createElement("p");
+p2.textContent = "Paragraphe 2";
+
+let p3 = document.createElement("p");
+p3.textContent = "Paragraphe 3";
+
+// كنضيفوهم للـ container باستعمال appendChild
+container.appendChild(p1);
+container.appendChild(p2);
+container.appendChild(p3);
+
+// كنضيفو container للـ body
+document.body.appendChild(container);
+
+
+/* =========================
+   ✅ Exercice 2
+========================= */
+
+// كنصايبو liste ul
+let ul = document.createElement("ul");
+
+// كنصايبو 2 elements li
+let li1 = document.createElement("li");
+li1.textContent = "Element 1";
+
+let li2 = document.createElement("li");
+li2.textContent = "Element 2";
+
+// كنضيفوهم
+ul.appendChild(li1);
+ul.appendChild(li2);
+
+// كنصايبو element جديد
+let li0 = document.createElement("li");
+li0.textContent = "Element ajouté au début";
+
+// كنضيفوه فالبداية ب prepend
+ul.prepend(li0);
+
+document.body.appendChild(ul);
+
+
+/* =========================
+   ✅ Exercice 3
+========================= */
+
+// كنصايبو container
+let btnContainer = document.createElement("div");
+
+// كنصايبو 4 buttons
+for (let i = 1; i <= 4; i++) {
+  let btn = document.createElement("button");
+  btn.textContent = "Button " + i;
+  btnContainer.appendChild(btn);
+}
+
+// كنحيدو 3ème bouton
+btnContainer.children[2].remove();
+
+document.body.appendChild(btnContainer);
+
+
+/* =========================
+   ✅ Exercice 4
+========================= */
+
+// كنصايبو liste
+let ul2 = document.createElement("ul");
+
+for (let i = 1; i <= 3; i++) {
+  let li = document.createElement("li");
+  li.textContent = "Item " + i;
+  ul2.appendChild(li);
+}
+
+// كنحيدو 2ème élément باستعمال removeChild
+ul2.removeChild(ul2.children[1]);
+
+document.body.appendChild(ul2);
+
+
+/* =========================
+   ✅ Exercice 5
+========================= */
+
+// كنصايبو lien
+let link = document.createElement("a");
+link.textContent = "Visit Google";
+
+// كنضيفو attributes
+link.setAttribute("href", "https://google.com");
+link.setAttribute("target", "_blank");
+link.setAttribute("title", "Go to Google");
+
+document.body.appendChild(link);
+
+
+/* =========================
+   ✅ Exercice 6
+========================= */
+
+// كنصايبو div
+let div = document.createElement("div");
+div.textContent = "Div avec classes";
+
+// كنضيفو classes
+div.classList.add("card", "active");
+
+document.body.appendChild(div);
+
+
+/* =========================
+   ✅ Exercice 7
+========================= */
+
+// bouton
+let toggleBtn = document.createElement("button");
+toggleBtn.textContent = "Toggle Active";
+
+// element li غادي يتبدل
+let box = document.createElement("div");
+box.textContent = "Click button";
+box.classList.add("card");
+
+// event click
+toggleBtn.addEventListener("click", function() {
+  box.classList.toggle("active"); // كيدير on/off للكلاس
+});
+
+document.body.appendChild(toggleBtn);
+document.body.appendChild(box);
+
+
+/* =========================
+   ✅ Exercice 8
+========================= */
+
+// container cartes
+let cardsContainer = document.createElement("div");
+
+for (let i = 1; i <= 3; i++) {
+  let card = document.createElement("div");
+
+  card.textContent = "Card " + i;
+
+  // كنضيفو class
+  card.classList.add("card");
+
+  // كنضيفو attribut
+  card.setAttribute("data-id", i);
+
+  cardsContainer.appendChild(card);
+}
+
+document.body.appendChild(cardsContainer);
+
+
+/* =========================
+   ✅ Exercice 9
+========================= */
+
+// container 1
+let c1 = document.createElement("div");
+c1.textContent = "Container 1";
+
+// container 2
+let c2 = document.createElement("div");
+c2.textContent = "Container 2";
+
+// element
+let item = document.createElement("p");
+item.textContent = "Je vais bouger";
+
+// كنضيفوه ل container 1
+c1.appendChild(item);
+
+// كنحيدوه ونزيدوه ف container 2
+item.remove();
+c2.appendChild(item);
+
+document.body.appendChild(c1);
+document.body.appendChild(c2);
+
+
+/* =========================
+   ✅ Exercice 10 (TO DO)
+========================= */
+
+let input = document.createElement("input");
+input.placeholder = "Ajouter une tâche";
+
+let addBtn = document.createElement("button");
+addBtn.textContent = "Ajouter";
+
+let list = document.createElement("ul");
+
+// إضافة tâche
+addBtn.addEventListener("click", function() {
+  let li = document.createElement("li");
+  li.textContent = input.value;
+
+  // click = done
+  li.addEventListener("click", function() {
+    li.classList.toggle("done");
+  });
+
+  // bouton supprimer
+  let del = document.createElement("button");
+  del.textContent = "X";
+
+  del.addEventListener("click", function() {
+    li.remove();
+  });
+
+  li.appendChild(del);
+  list.appendChild(li);
+
+  input.value = "";
+});
+
+document.body.appendChild(input);
+document.body.appendChild(addBtn);
+document.body.appendChild(list);
+
+</script>
+
+</body>
+</html>
